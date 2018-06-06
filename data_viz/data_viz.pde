@@ -1,34 +1,41 @@
 /**
+ * Visualizing representation in tech
  */
 
+// Population breakdowns given in US Census Bureau under
+// software engineering 
 String[] gender_population = {"male", "female"};
 float[] gender_data = {77.9, 22.1};
 
+// For all of the US
 float[] whole_gender_data = {52.5, 47.5};
 
+// Population breakdowns given in US Census Bureau under
+// software engineering 
 String[] race_ethnicity_population = {"White", "Asian", "Black", "Hispanic", "Other"};
 float[] race_ethnicity_data = {59.1, 30.1, 5.1, 3.9, 1.8};
 
+// For all of the US
 float[] whole_race_ethnicity_data = {66.9, 5.5, 10.8, 14.9, 1.9};
 
+// Color palette assumes we only have 5 data points
 color[] palette = {#ff9e80, #ade470, #00695c, #4dd0e1, #ffff8d};
 
 
 PFont font;
-
-
-String[] lines;
-int index = 0;
-
-int dim;
+int index;
+int dim; // dimensions of our squares
 
 void setup() {
+  // draw the canvas; should be a square with an extra 250
+  // pixels in the length for the key
   size(750, 500);
+  // set the dimensions of our squares to be 1/100 of the height
   dim = height / 100;
+  // make background black
   background(0);
+  
   stroke(255);
-  frameRate(12);
-  lines = loadStrings("positions.txt");
   font = createFont("data/ArialMT-48.vlw", 15);
   textFont(font);
   drawKey(race_ethnicity_population);
@@ -59,6 +66,7 @@ void draw() {
   }
 }
 
+// Draws the key in the leftmost 250 pixels
 void drawKey(String[] keyData) {
     stroke(255);
     fill(255);
